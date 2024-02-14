@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+            body {
+        font-family: 'Lobster', cursive; /* Change to a romantic cursive font */
+        background-color: #ffdde1;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 100vh;
+        margin: 0;
+        background: url('https://static.brusheezy.com/system/resources/previews/000/052/896/original/cartoon-flower-background-psd-photoshop-backgrounds.jpg') repeat;
+        font-size: 35px;
+        color: rgb(255, 0, 174);
+    }
+    .hh{
+        -webkit-text-stroke: 2px #71004f;
+        font-weight:900;
+
+    }
+    .pp{
+        -webkit-text-stroke: 2px #71004f;
+
+        font-size: 50px;
+        font-style: oblique;
+        font-weight: 800;
+    }
+
+    body
+
+    .container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-color: transparent;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .image{
+        height: 280px;
+        
+    }
+
+    .buttons button {
+        background-color: #ff4d79;
+        color: #fff;
+        padding: 10px 30px;
+        border: none;
+        border-radius: 10px;
+        margin: 10px;
+        font-size: 26px;
+        cursor: pointer;
+        position: relative;
+        font-family: 'Lobster', cursive; 
+
+    }
+
+    .buttons button:hover {
+        background-color: #7c1f37;
+
+    }
+
+    .buttons{
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+    }
+
+    #no-button{
+        
+    }
+
+    .hidden-message {
+        display: none;
+        margin-top: 20px;
+    }
+
+    .move {
+        animation: moveNoMessage 0.5s linear;
+    }
+
+    @keyframes moveNoMessage {
+        0% { transform: translate(0, 0); }
+        25% { transform: translate(30px, 30px); }
+        50% { transform: translate(-20px, -20px); }
+        75% { transform: translate(10px, 10px); }
+        100% { transform: translate(0, 0); }
+    }
+    </style>
+    <title>Valentine's Proposal</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="Mainprompt">
+            <img class="image" src="https://media.tenor.com/Eog9WTKDMAkAAAAM/cat-and-flower.gif"></img>
+            <h1 class="hh" id="name">Эй Амина, чё ты там?</h1>
+            <p class="pp" id="question">Менің Валентинім боласың ба?</p>
+            <div class="buttons">
+                <button id="no-button" onclick="showMessage('No')">Не</button>
+                <button onclick="showMessage('Yes')" id="yesButton">Да</button>
+            </div>
+            <div class="hidden-message" id="no-message">
+                <p>Nice try, but you can't escape that easily!</p>
+            </div>
+            <div class="hidden-message" id="yes-message">
+                <p>YAY! See you on the 14th, babygirl.</p>
+            </div>
+        </div>
+    </div>
+    <script >
+        function showMessage(response) {
+    if (response === "No") {
+      const noButton = document.getElementById("no-button");
+      const container = document.querySelector(".container");
+      const maxWidth = window.innerWidth - noButton.offsetWidth;
+      const maxHeight = window.innerHeight - noButton.offsetHeight;
+  
+      noButton.style.position = "absolute";
+  
+      document.getElementsByClassName("image")[0].src = "https://img.artpal.com/547522/2-21-9-2-15-25-58m.jpg";
+      const randomX = Math.max(0, Math.floor(Math.random() * maxWidth));
+      const randomY = Math.max(0, Math.floor(Math.random() * maxHeight));
+  
+      noButton.style.left = randomX + "px";
+      noButton.style.top = randomY + "px";
+  
+      document.getElementById("question").textContent =
+        "Не варик:)";
+      document.getElementById("name").style.display = "none";
+  
+    }
+  
+    if (response === "Yes") {
+      // Remove name message and no button
+      document.getElementById("name").remove();
+      document.getElementById("no-button").remove();
+  
+      const yesMessage = document.getElementById("question");
+      yesMessage.textContent = "Гоу тогда вечером на винишко😘";
+      yesMessage.style.display = "block";
+      yesMessage.style.fontStyle = "normal";
+      document.getElementsByClassName("image")[0].src = "https://i.pinimg.com/originals/23/51/bc/2351bc65b2b5d75cef146b7edddf805b.gif";
+  
+      document.getElementById("yesButton").remove();
+    }
+  }
+    </script>
+</body>
+
+</html>
